@@ -27,8 +27,10 @@ Para utilização das variáveis de ambientes disponbilizadas no arquivo .env, u
 ### Requisito 3: :white_check_mark:
 Na criação do serviço web no docker-compose utilizei a opção port para alterar a porta do conteiner para 8008 e mantive a porta do Docker Host em 8000.
 
-### Requisito 4: :white_check_mark:
-Na construção do workflow Django CI optei por utilizar as versões de Python compatíveis com a versão do Django que está sendo utilizada, prossegui com a instalação das dependências da aplicação, migrações da aplicação e testes com pytest e black.
+### Requisito 4: :heavy_exclamation_mark:
+Na construção do workflow Django CI optei por utilizar as versões de Python compatíveis com a versão do Django que está sendo utilizada, prossegui com a instalação das dependências da aplicação, migrações da aplicação e testes com pytest.
+No entanto ainda não consigo corrigir alguns erros que estão ocorrendo durante a implementação.
+:construction: Em construção :construction:
 
 ### Requisito 5: :white_check_mark:
 No arquivo Setting.py do projeto docker_django alterei os campos de DATABASE para que utilizassem as variáveis de ambiente já adicionadas aos containers durante o requisito 2. A instância db foi criada no Docker-compose.
