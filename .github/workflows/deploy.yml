@@ -64,7 +64,7 @@ jobs:
           DB_PORT: ${{ secrets.DB_PORT }}
           DB_HOST: ${{ secrets.DB_HOST }}
         ports:
-          - DB_PORT:DB_PORT
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
