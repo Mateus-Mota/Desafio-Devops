@@ -60,3 +60,5 @@ docker-compose up
 ~~~
 
 3° Passo: Acesse a página do projeto pelo endereço http://127.0.0.1
+
+teste123
