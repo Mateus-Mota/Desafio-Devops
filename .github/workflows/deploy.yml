@@ -19,9 +19,9 @@ jobs:
       postgres_main:
         image: postgres
         env:
-          DB_USER: ${{ secrets.DB_USER }}
+          POSTGRES_USER: ${{ secrets.DB_USER }}
           POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
-          DB_HOST: ${{ secrets.DB_HOST }}
+          POSTGRES_HOST: ${{ secrets.DB_HOST }}
 
         ports:
           - 5432:5432
@@ -42,8 +42,7 @@ jobs:
         run: sudo apt-get install libpq-dev
       - name: Install dependencies
         run: |
-          ls
-          pwd
+          cd web
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest-django
