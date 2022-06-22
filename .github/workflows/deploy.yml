@@ -51,6 +51,8 @@ jobs:
           POSTGRES_HOST: ${{ secrets.DB_HOST }}
       - name: Run migrations
         run: python web/manage.py migrate
+        env:
+          SECRET_KEY: ${{ secrets.DB_SECRET_KEY }}
       - name: Run tests
         run: py.test
 
