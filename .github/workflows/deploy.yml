@@ -42,16 +42,15 @@ jobs:
         run: sudo apt-get install libpq-dev
       - name: Install dependencies
         run: |
-          cd web
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r web/requirements.txt
           pip install pytest-django
         env:
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
-          DB_HOST: ${{ secrets.DB_HOST }}
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
+          POSTGRES_HOST: ${{ secrets.DB_HOST }}
       - name: Run migrations
-        run: python manage.py migrate
+        run: python web/manage.py migrate
       - name: Run tests
         run: py.test
 
