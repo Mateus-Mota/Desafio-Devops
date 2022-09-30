@@ -3,15 +3,16 @@ pipeline {
     stages {
         stage('Stage 1 main') {
             when {
-                branch 'refs/remotes/origin/main'
+                branch 'main'
             }
             steps {
-                echo "${some_ip}"
+                sh "echo ${GIT_BRANCH}"
+                sh "${GIT_COMMITTER_NAME}" 
             }
         }
         stage('Stage 1 main 2') {
             when {
-                branch 'main'
+                branch 'jenkins_test'
             }
             steps {
                 echo "${some_ip}"
