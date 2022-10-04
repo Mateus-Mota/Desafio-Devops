@@ -37,7 +37,7 @@ pipeline {
             steps{
                 script{
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
-                    sh "docker build -t $desafio-devops-${env.BRANCH_NAME}-${env.BUILD_ID} --pull -f Dockerfile ."     
+                    sh "docker build -t desafio-devops-${env.BRANCH_NAME}-${env.BUILD_ID} --pull -f Dockerfile ."     
                 }
             }  
         }
