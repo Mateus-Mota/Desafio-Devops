@@ -39,6 +39,8 @@ pipeline {
                 script{
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
                     sh "docker --version"
+                    sh "echo ${dockerHome}"
+                    docker.image('desafio-devops:latest')
                     sh "docker build -t desafio-devops-${env.BRANCH_NAME}-${env.BUILD_ID} --pull -f web/Dockerfile ."
                 }
             }  
