@@ -5,6 +5,7 @@ pipeline {
         stage('Stage 1 main scripted') {
             steps {
                 script {
+                    checkout scm
                     def branchName = "${env.BRANCH_NAME}"
                     if (branchName ==~ 'main') {
                         sh "echo ${GIT_BRANCH}"
