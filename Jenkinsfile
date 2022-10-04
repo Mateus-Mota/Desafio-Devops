@@ -6,6 +6,7 @@ pipeline {
     }
     environment {
         sonarToken = credentials('SonarQubeToken')
+        dockerHome = tool 'docker'
     }
     stages {
         stage('Stage 1 main scripted') {
