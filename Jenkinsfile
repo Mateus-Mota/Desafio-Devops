@@ -14,10 +14,11 @@ pipeline {
                 script {
                     checkout scm
                     def branchName = "${env.BRANCH_NAME}"
+                    sh "echo ${branchName}"
+                    sh "echo ${env.BRANCH_NAME}"
                     if (branchName ==~ 'origin/main') {
                         sh "echo ${GIT_BRANCH}"
                         sh "echo ${GIT_COMMITTER_NAME}" 
-                        sh "echo ${branchName}"
                     }
                 }
             }
@@ -37,7 +38,8 @@ pipeline {
             steps{
                 script{
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
-                    sh "docker build -t desafio-devops-${env.BRANCH_NAME}-${env.BUILD_ID} --pull -f web/Dockerfile ."     
+                    sh "docker --version"
+                    sh "docker build -t desafio-devops-${env.BRANCH_NAME}-${env.BUILD_ID} --pull -f web/Dockerfile ."
                 }
             }  
         }
