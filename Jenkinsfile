@@ -1,6 +1,12 @@
 pipeline {
     agent any
     
+    options {
+        skipDefaultCheckout(true)
+    }
+    environment {
+        sonarToken = credentials('SonarQubeToken')
+    }
     stages {
         stage('Stage 1 main scripted') {
             steps {
@@ -21,6 +27,7 @@ pipeline {
                 branch 'main'
             }
             steps {
+                checkout scm
                 echo "${env.BRANCH_NAME}"
             }
         }
