@@ -36,10 +36,8 @@ pipeline {
         stage('Build scripted') {
             steps{
                 script{
-                    withDockerRegistry(credentialsId: 'DockerHubRegistry', toolName: 'docker', url: 'https://registry.frexco.com.br'){
-                        env.PATH = "${dockerHome}/bin:${env.PATH}"
-                        sh "docker build -t $desafio-devops-${env.BRANCH_NAME}-${env.BUILD_ID} --pull -f Dockerfile ."
-                    }        
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                    sh "docker build -t $desafio-devops-${env.BRANCH_NAME}-${env.BUILD_ID} --pull -f Dockerfile ."     
                 }
             }  
         }
