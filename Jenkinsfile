@@ -13,7 +13,7 @@ pipeline {
                 script {
                     checkout scm
                     def branchName = "${env.BRANCH_NAME}"
-                    if (branchName ==~ 'main') {
+                    if (branchName ==~ 'origin/main') {
                         sh "echo ${GIT_BRANCH}"
                         sh "echo ${GIT_COMMITTER_NAME}" 
                         sh "echo ${branchName}"
