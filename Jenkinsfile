@@ -22,6 +22,7 @@ pipeline {
                     def branchName = "${env.BRANCH_NAME}"
                     sh "echo ${branchName}"
                     sh "echo ${env.BRANCH_NAME}"
+                    sh "echo ${env.GIT_BRANCH}"
                     if (branchName ==~ 'origin/main') {
                         sh "echo ${GIT_BRANCH}"
                         sh "echo ${GIT_COMMITTER_NAME}" 
@@ -32,11 +33,12 @@ pipeline {
         
         stage('Stage 2 main declarative') {
             when {
-                branch 'main'
+                branch 'origin/main'
             }
             steps {
                 checkout scm
                 echo "${env.BRANCH_NAME}"
+                echo "${env.GIT_BRANCH}"
             }
         }
         
