@@ -10,12 +10,6 @@ pipeline {
     }
     stages {
         stage('Build docker image') {
-            agent {
-                docker {
-                    reuseNode true
-                    image 'maven:3.5.0-jdk-8'
-                }
-            }
             steps {
                 script {
                     checkout scm
