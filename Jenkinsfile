@@ -1,9 +1,6 @@
 pipeline {
     agent any
     
-    options {
-        skipDefaultCheckout(true)
-    }
     environment {
         sonarToken = credentials('SonarQubeToken')
         dockerHome = tool 'docker'
