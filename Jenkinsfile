@@ -40,7 +40,7 @@ pipeline {
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
                     sh "docker --version"
                     sh "echo ${dockerHome}"
-                    sh "docker build -t desafio-devops-${env.BRANCH_NAME}-${env.BUILD_ID} --pull -f web/Dockerfile ."
+                    sh "docker build -t desafio-devops-${env.BRANCH_NAME}-${env.BUILD_ID} --pull -f web/Dockerfile web"
                 }
             }  
         }
