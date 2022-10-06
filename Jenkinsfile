@@ -26,8 +26,6 @@ pipeline {
                     -Dsonar.exclusions=.*,Dockerfile,*.md,*.yml,*.conf \
                     -Dsonar.host.url=http://sonarqube:9000 \
                     -Dsonar.login=${sonarToken}'
-                    println "${env.SONAR_HOST_URL}"
-                    println "${env.SONAR_CONFIG_NAME}"
                 }
             }
         }
@@ -36,7 +34,6 @@ pipeline {
             steps{
                 script{
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
-                    sh "docker --version && echo $USER"
                     sh "docker build -t desafio-devops-${env.BUILD_ID} --pull -f web/Dockerfile web"
                 }
             }  
