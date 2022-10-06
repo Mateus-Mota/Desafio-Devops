@@ -24,7 +24,7 @@ pipeline {
                     -Dsonar.projectKey=${sonarProjectName} \
                     -Dsonar.sources=./web \
                     -Dsonar.exclusions=.*,Dockerfile,*.md,*.yml,*.conf \
-                    -Dsonar.host.url=https://0.0.0.0:3000 \
+                    -Dsonar.host.url=http://172.17.128.1:9000 \
                     -Dsonar.login=${sonarToken}'
                     println "${env.SONAR_HOST_URL}"
                     println "${env.SONAR_CONFIG_NAME}"
