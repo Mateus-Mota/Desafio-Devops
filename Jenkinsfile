@@ -15,6 +15,7 @@ pipeline {
                     def branchName = "${env.GIT_BRANCH}"
                     if (branchName ==~ 'origin/main') {
                         sh "echo ${GIT_BRANCH}"
+                    }
                     if (branchName ==~ 'origin/jenkins-tests') {
                         sh "echo ${GIT_BRANCH}"
                     }
