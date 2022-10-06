@@ -14,14 +14,14 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    }
                 }
             }
         }
         
         stage ('Code Analysis') {
             steps {
-                 withSonarQubeEnv('SonarQube') {
+                scannerHome = tool 'SonarQubeScanner'
+                withSonarQubeEnv('SonarQube') {
                     sh '${scannerHome}/bin/sonar-scanner \
                     -Dsonar.projectKey=${sonarProjectName} \
                     -Dsonar.sources=./web \
