@@ -49,7 +49,7 @@ pipeline {
                     remote.name = "Agent 2"
                     remote.host = "${env.AGENT_2}"
                     remote.allowAnyHosts = true
-                    withCredentials([sshUserPrivateKey(credentialsId: "${jenkins_agent}", keyFileVariable: 'private_key', usernameVariable: 'sshUser')]) {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'jenkins', keyFileVariable: 'private_key', usernameVariable: 'sshUser')]) {
                         remote.user = sshUser
                         remote.identityFile = private_key
                         sshCommand remote: remote, command: "docker ps -a"
