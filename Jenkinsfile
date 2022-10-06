@@ -14,13 +14,6 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    def branchName = "${env.GIT_BRANCH}"
-                    sh "echo ${GIT_BRANCH}"
-                    if (branchName == 'origin/main') {
-                        sh "echo ${GIT_BRANCH}"
-                    }
-                    if (branchName == 'origin/jenkins-tests') {
-                        sh "echo ${GIT_BRANCH}"
                     }
                 }
             }
