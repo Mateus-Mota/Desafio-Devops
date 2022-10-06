@@ -43,7 +43,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh "echo ${jenkins_agent}"
                     def remote = [:]
                     remote.name = "Agent 2"
                     remote.host = "${env.AGENT_2}"
