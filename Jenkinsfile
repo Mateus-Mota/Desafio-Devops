@@ -6,6 +6,7 @@ pipeline {
     }
     environment {
         sonarToken = credentials('SonarQubeToken')
+        jenkins_agent = credentials('jenkins')
         dockerHome = tool 'docker'
         scannerHome = tool 'SonarQubeScanner'
     }
@@ -43,11 +44,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    sh "echo ${jenkins_agent}"
                     def remote = [:]
                     remote.name = "Agent 2"
                     remote.host = "${env.AGENT_2}"
                     remote.allowAnyHosts = true
-                    withCredentials([sshUserPrivateKey(credentialsId: 'root', keyFileVariable: 'private_key', usernameVariable: 'sshUser')]) {
+                    withCredentials([sshUserPrivateKey(credentialsId: "${jenkins_agent}", keyFileVariable: 'private_key', usernameVariable: 'sshUser')]) {
                         remote.user = sshUser
                         remote.identityFile = private_key
                         sshCommand remote: remote, command: "docker ps -a"
