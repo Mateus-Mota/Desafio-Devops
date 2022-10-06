@@ -27,8 +27,8 @@ pipeline {
                     -Dsonar.exclusions=.*,Dockerfile,*.md,*.yml,*.conf \
                     -Dsonar.host.url=https://0.0.0.0:3000 \
                     -Dsonar.login=${sonarToken}'
-                    println ${env.SONAR_HOST_URL}
-                    println ${env.SONAR_CONFIG_NAME}
+                    println "${env.SONAR_HOST_URL}"
+                    println "${env.SONAR_CONFIG_NAME}"
                 }
             }
         }
