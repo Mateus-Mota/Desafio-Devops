@@ -27,10 +27,7 @@ pipeline {
                     -Dsonar.host.url=http://sonarqube:9000 \
                     -Dsonar.login=${sonarToken}'
                 }
-                
-                */timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }*/
+            
             }
         }
         
