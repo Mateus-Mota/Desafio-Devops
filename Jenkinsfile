@@ -21,7 +21,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh '${scannerHome}/bin/sonar-scanner \
-                    -Dsonar.projectKey=${sonarProjectName} \
+                    -Dsonar.projectKey=desafio-devops \
                     -Dsonar.sources=./web \
                     -Dsonar.exclusions=.*,Dockerfile,*.md,*.yml,*.conf \
                     -Dsonar.host.url=http://sonarqube:9000 \
