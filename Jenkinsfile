@@ -6,7 +6,6 @@ pipeline {
     }
     environment {
         sonarToken = credentials('SonarQubeToken')
-        jenkins_agent = credentials('jenkins')
         dockerHome = tool 'docker'
         scannerHome = tool 'SonarQubeScanner'
     }
