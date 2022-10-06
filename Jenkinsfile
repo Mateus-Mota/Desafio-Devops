@@ -12,9 +12,8 @@ pipeline {
     stages {
         stage('Checkout scm scripted') {
             steps {
-                script {
-                    checkout scm
-                }
+                cleanWs()
+                checkout scm
             }
         }
         
