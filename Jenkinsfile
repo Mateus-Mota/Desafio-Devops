@@ -28,9 +28,9 @@ pipeline {
                     -Dsonar.login=${sonarToken}'
                 }
                 
-                timeout(time: 5, unit: 'MINUTES') {
+                *\timeout(time: 5, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
-                }
+                }*\
             }
         }
         
@@ -42,5 +42,22 @@ pipeline {
                 }
             }  
         }
+        
+        stage('Deploy') {
+            steps {
+                script {
+                    def remote = [:]
+                    remote.name = "Agent 2"
+                    remote.host = "${env.AGENT_2}"
+                    remote.allowAnyHosts = true
+                    withCredentials([sshUserPrivateKey(credentialsId: 'jenkins', keyFileVariable: 'private_key', usernameVariable: 'sshUser')]) {
+                        remote.user = sshUser
+                        remote.identityFile = private_key
+                        sshCommand remote: remote, command: "docker ps -a"
+                    }
+                }
+            }
+        }
+        
     }
 }
