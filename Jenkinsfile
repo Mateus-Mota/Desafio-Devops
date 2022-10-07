@@ -55,16 +55,16 @@ pipeline {
                 }
             }
         }
-        
-        post {
-            always {
-                script {
-                    final String url = "https://api.telegram.org/$env.TOKEN/sendMessage"
-                    final String text = "<b>Job</b>: $env.JOB_NAME\n<b>Build</b>: #$env.BUILD_NUMBER - $currentBuild.currentResult - <a href=\\\"$env.BUILD_URL\\\">Link</a>\n<b>Duration</b>: $currentBuild.durationString"
-                    sh(script: "echo '-s -X POST \"$url\" -d chat_id=\"-$env.CHAT_ID\" -d parse_mode=\"HTML\" -d text=\"$text\"'")
-                }
+    }  
+    
+    post {
+        always {
+            script {
+                final String url = "https://api.telegram.org/$env.TOKEN/sendMessage"
+                final String text = "<b>Job</b>: $env.JOB_NAME\n<b>Build</b>: #$env.BUILD_NUMBER - $currentBuild.currentResult - <a href=\\\"$env.BUILD_URL\\\">Link</a>\n<b>Duration</b>: $currentBuild.durationString"
+                sh(script: "echo '-s -X POST \"$url\" -d chat_id=\"-$env.CHAT_ID\" -d parse_mode=\"HTML\" -d text=\"$text\"'")
             }
         }
-        
-    }
+    }    
+     
 }
