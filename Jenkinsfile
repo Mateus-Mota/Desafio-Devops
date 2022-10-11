@@ -17,6 +17,13 @@ pipeline {
             }
         }
         
+        stage('Example condition branch scripted') {
+            if (env.BRANCH_NAME == 'main') {
+                echo 'I only execute on the main branch'
+            } else {
+                echo 'I execute elsewhere'
+        }
+                
         stage ('Code Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
