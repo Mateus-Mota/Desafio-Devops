@@ -1,14 +1,27 @@
 pipeline {
     agent any
     stages {
-        stage('Stage 1 main') {
-            when {
-                branch 'refs/remotes/origin/main'
-            }
+        
+        stage('Code Analysis') {
+            environment {
+                scannerHome = tool 'SonarQubeScanner'
+            }    
             steps {
-                echo "${some_ip}"
+                checkout scm
+                withSonarQubeEnv('SonarQube') {
+                    sh '${scannerHome}/bin/sonar-scanner \
+                    -Dsonar.projectKey=Desafio-DevOps \
+                    -Dsonar.sources=. \
+                    -Dsonar.host.url=https://sonar.frexco.com.br \
+                    -Dsonar.login=${env.sonarToken}'
+                }
+
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
+        
         stage('Stage 1 main 2') {
             when {
                 branch 'main'
