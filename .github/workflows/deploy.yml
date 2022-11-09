@@ -47,7 +47,7 @@ jobs:
       - name: Check migrations
         run: python web/manage.py makemigrations
         env:
-          SECRET_KEY: ${{ secrets.DB_SECRET_KEY }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
       - name: Run migrations
         run: python web/manage.py migrate
         env:
